@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return const SimpleMapScreen();
                 }));
               },
-              child: const Text("     Navigation Map     ")),
+              child: const Text("      Navigation Map     ")),
           ElevatedButton(
               onPressed: () {
                 Navigator.of(context)
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return const SearchPlacesScreen();
                 }));
               },
-              child: const Text(" Search places ")),
+              child: const Text("       Search places       ")),
           ElevatedButton(
               onPressed: () {
                 Navigator.of(context)
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return const NearByPlacesScreen();
                 }));
               },
-              child: const Text("Near by Places")),
+              child: const Text("        Places Near         ")),
           // ElevatedButton(
           //     onPressed: () {
           //       Navigator.of(context)
