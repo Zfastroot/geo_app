@@ -6,18 +6,18 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:google_api_headers/google_api_headers.dart';
 
 class SearchPlacesScreen extends StatefulWidget {
-  const SearchPlacesScreen({super.key});
+  const SearchPlacesScreen({Key? key}) : super(key: key);
 
   @override
-  State<SearchPlacesScreen> createState() => _SearchPlacesScreeState();
+  State<SearchPlacesScreen> createState() => _SearchPlacesScreenState();
 }
 
-const kGoogleApiKey = '';
+const kGoogleApiKey = 'AIzaSyDX2PBj6IvOTkq1LLubV2rwF1hKLtVCp7Y';
 final homeScaffoldKey = GlobalKey<ScaffoldState>();
 
-class _SearchPlacesScreeState extends State<SearchPlacesScreen> {
+class _SearchPlacesScreenState extends State<SearchPlacesScreen> {
   static const CameraPosition initialCameraPosition =
-      CameraPosition(target: LatLng(0, 0), zoom: 14.0);
+      CameraPosition(target: LatLng(37.42796, -122.08574), zoom: 14.0);
 
   Set<Marker> markersList = {};
 
@@ -30,7 +30,7 @@ class _SearchPlacesScreeState extends State<SearchPlacesScreen> {
     return Scaffold(
       key: homeScaffoldKey,
       appBar: AppBar(
-        title: const Text(" Search places "),
+        title: const Text("Google Search Places"),
       ),
       body: Stack(
         children: [
@@ -43,7 +43,7 @@ class _SearchPlacesScreeState extends State<SearchPlacesScreen> {
             },
           ),
           ElevatedButton(
-              onPressed: _handlePressButton, child: const Text("Search places"))
+              onPressed: _handlePressButton, child: const Text("Search Places"))
         ],
       ),
     );

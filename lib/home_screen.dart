@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geo_app/screens/current_location_screen.dart';
+import 'package:geo_app/screens/nearby_places_screen.dart';
+// import 'package:geo_app/screens/polyline_screen.dart';
 import 'package:geo_app/screens/simple_map_screen.dart';
 import 'package:geo_app/screens/search_places_screen.dart';
 
@@ -49,7 +51,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   return const SearchPlacesScreen();
                 }));
               },
-              child: const Text(" Search places "))
+              child: const Text(" Search places ")),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return const NearByPlacesScreen();
+                }));
+              },
+              child: const Text("Near by Places")),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       Navigator.of(context)
+          //           .push(MaterialPageRoute(builder: (BuildContext context) {
+          //         return const PolylineScreen();
+          //       }));
+          //     },
+          //     child: const Text("Polyline between 2 points"))
         ]),
       ),
     );
