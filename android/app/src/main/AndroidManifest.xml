@@ -1,7 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.geo_app">
+
+    <!-- Access to fine location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Access to coarse location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
    <application
-        android:label="geo_app"
+        android:label="GoLocator Maps"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
