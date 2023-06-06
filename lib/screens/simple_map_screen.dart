@@ -19,20 +19,17 @@ class _SimpleMapScreenState extends State<SimpleMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Navigation Map"),
-          centerTitle: true,
-        ),
-        body: Column(
-          children: [
-            GoogleMap(
-              initialCameraPosition: initialPosition,
-              mapType: MapType.terrain,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-            ),
-          ],
-        ));
+      appBar: AppBar(
+        title: const Text("Navigation Map"),
+        centerTitle: true,
+      ),
+      body: GoogleMap(
+        initialCameraPosition: initialPosition,
+        mapType: MapType.normal,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
+    );
   }
 }

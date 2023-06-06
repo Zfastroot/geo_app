@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:geo_app/model/nearby_response.dart';
-
 import 'package:http/http.dart' as http;
+import 'package:geo_app/model/nearby_response.dart';
 
 class NearByPlacesScreen extends StatefulWidget {
   const NearByPlacesScreen({Key? key}) : super(key: key);
@@ -32,10 +31,11 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
         child: Column(
           children: [
             ElevatedButton(
-                onPressed: () {
-                  getNearbyPlaces();
-                },
-                child: const Text("Get Nearby Places")),
+              onPressed: () {
+                getNearbyPlaces();
+              },
+              child: const Text("Get Nearby Places"),
+            ),
             if (nearbyPlacesResponse.results != null)
               for (int i = 0; i < nearbyPlacesResponse.results!.length; i++)
                 nearbyPlacesWidget(nearbyPlacesResponse.results![i])
@@ -56,12 +56,17 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
             '&key=' +
             apiKey);
 
-    var response = await http.post(url);
+    var response = await http.get(url);
 
-    nearbyPlacesResponse =
-        NearbyPlacesResponse.fromJson(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      nearbyPlacesResponse =
+          NearbyPlacesResponse.fromJson(jsonDecode(response.body));
 
-    setState(() {});
+      setState(() {});
+    } else {
+      // Handle error response
+      print('Error: ${response.statusCode}');
+    }
   }
 
   Widget nearbyPlacesWidget(Results results) {
@@ -70,15 +75,18 @@ class _NearByPlacesScreenState extends State<NearByPlacesScreen> {
       margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(10)),
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Column(
         children: [
           Text("Name: " + results.name!),
-          Text("Location: " +
-              results.geometry!.location!.lat.toString() +
-              " , " +
-              results.geometry!.location!.lng.toString()),
+          Text(
+            "Location: " +
+                results.geometry!.location!.lat.toString() +
+                " , " +
+                results.geometry!.location!.lng.toString(),
+          ),
           Text(results.openingHours != null ? "Open" : "Closed"),
         ],
       ),

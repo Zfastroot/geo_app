@@ -65,7 +65,8 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen> {
                 borderSide: BorderSide(color: Colors.white))),
         components: [
           Component(Component.country, "pk"),
-          Component(Component.country, "usa")
+          Component(Component.country, "usa"),
+          Component(Component.country, "ma")
         ]);
 
     displayPrediction(p!, homeScaffoldKey.currentState);
